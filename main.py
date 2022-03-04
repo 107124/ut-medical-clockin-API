@@ -43,7 +43,7 @@ def add_project():
 
 
 # This will query all the stamps!
-@my_app.route("/", methods=["GET"])
+@my_app.route("/stamps", methods=["GET"])
 def get_stamps():
     all_stamps = Stamps.query.all()
     result = stamps_schema.dump(all_stamps)
