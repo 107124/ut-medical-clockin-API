@@ -114,3 +114,5 @@ if __name__ == "__main__":
 
 # IF there's a h10 error in the heroku logs --tail, make sure you update the requirements.txt file by doing:
 # pip freeze > requirements.txt
+
+# IMPORTANT make sure the main file is called app.py for deployment reasons in heroku.
