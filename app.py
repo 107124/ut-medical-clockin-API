@@ -111,3 +111,6 @@ if __name__ == "__main__":
 # database for postgress
 # IMPORTANT!
 # change the URI from postgres:// to postgresql://
+
+# IF there's a h10 error in the heroku logs --tail, make sure you update the requirements.txt file by doing:
+# pip freeze > requirements.txt
