@@ -81,7 +81,7 @@ def stamp_delete(id):
     db.session.delete(stamp)
     db.session.commit()
 
-    return(f"Date: {date}\nTime: {time} was successfully deleted")
+    return(f"Date:{date}\nTime: {time} was successfully deleted")
 
 
 if __name__ == "__main__":
