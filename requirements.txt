@@ -1,2 +1,1 @@
 Flask~=2.0.3
-web: gunicorn app:app
