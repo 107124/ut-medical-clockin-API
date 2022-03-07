@@ -1,12 +1,20 @@
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
+from flask_cors import CORS
 import os
+from flask_heroku import Heroku
+# import psycopg2
 
 my_app = Flask(__name__)
+heroku = Heroku(my_app)
+# base_file = os.path.abspath(os.path.dirname(__file__))
+# my_app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(base_file, "app.sqlite")
 
 base_file = os.path.abspath(os.path.dirname(__file__))
-my_app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(base_file, "app.sqlite")
+my_app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://qvimxnvgmxqrwd:9717a39d81934c9b0cc5e037d0ed19520e0d0a78cb5d8893b234ebe2c0a2ac43@ec2-44-195-191-252.compute-1.amazonaws.com:5432/d31kda6bjh23gl"
+
+CORS(my_app)
 
 db = SQLAlchemy(my_app)
 marsh = Marshmallow(my_app)
@@ -87,3 +95,19 @@ def stamp_delete(id):
 if __name__ == "__main__":
     my_app.run(debug=True)
 
+# to install postgress:
+# heroku addons:create heroku-postgresql:hobby-dev
+# pip install psycopg2-binary then import psycopg2 at the top
+# pip install flask-cors
+# from flask_cors import CORS
+# Then: CORS(my_app) AFTER app.config line
+# pipenv install flask gunicorn
+# pip install flask_heroku
+# from flask_heroku import Heroku
+# after my_app = Flask(__name__) say: heroku = Heroku(app)
+# IMPORTANT!
+# After adding the new postgres uri, make sure to delete the app.sqlite file, then get
+# into the python repl, from nameOfFile import db, then db.create_all() to create the new
+# database for postgress
+# IMPORTANT!
+# change the URI from postgres:// to postgresql://
