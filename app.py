@@ -30,7 +30,7 @@ class Stamps(db.Model):
 
 class StampSchema(marsh.Schema):
     class Meta:
-        fields = ("date", "time")
+        fields = ("id","date", "time")
 
 stamp_schema = StampSchema()
 stamps_schema = StampSchema(many=True)
